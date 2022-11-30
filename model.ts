@@ -1,4 +1,4 @@
-import {ObjectId} from "mongoose";
+import {ObjectId} from "bson";
 
 export type TTarget = {
     userId: ObjectId,
