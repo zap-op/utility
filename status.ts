@@ -51,14 +51,9 @@ export const SCAN_STATUS = {
         msg: "Invalid scan session!",
     },
 
-    ZAP_SERVICE_ERROR: {
+    ZAP_SPIDER_INITIALIZE_FAIL: {
         statusCode: -4,
-        msg: "ZAP service error!",
-    },
-
-    INTERNAL_ERROR: {
-        statusCode: -5,
-        msg: "Service internal error!",
+        msg: "ZAP spider initialize fail!",
     },
 };
 
