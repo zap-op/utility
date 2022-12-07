@@ -1,85 +1,92 @@
+const assert = <T>(el: T) => el;
+
+type TStatusResponse = {
+    statusCode: number,
+    msg: string,
+}
+
 export const MGMT_STATUS = {
-    TARGET_ADDED: {
-        statusCode: 0,
+    TARGET_ADDED: assert<TStatusResponse>({
+        statusCode: 10,
         msg: "Target added successfully",
-    },
-    TARGET_DELETEED: {
-        statusCode: 1,
+    }),
+    TARGET_DELETEED: assert<TStatusResponse>({
+        statusCode: 11,
         msg: "Target deleted successfully",
-    },
-    TARGET_INVAVLID_URL: {
-        statusCode: -1,
+    }),
+    TARGET_INVAVLID_URL: assert<TStatusResponse>({
+        statusCode: -11,
         msg: "Invalid URL for target",
-    },
-    TARGET_ADD_FAILED: {
-        statusCode: -2,
+    }),
+    TARGET_ADD_FAILED: assert<TStatusResponse>({
+        statusCode: -12,
         msg: "Target failed to add",
-    },
-    TARGET_INVALID_ID: {
-        statusCode: -3,
+    }),
+    TARGET_INVALID_ID: assert<TStatusResponse>({
+        statusCode: -13,
         msg: "Invalid ID for target",
-    },
-    TARGET_FIND_FAILED: {
-        statusCode: -4,
+    }),
+    TARGET_FIND_FAILED: assert<TStatusResponse>({
+        statusCode: -14,
         msg: "Target failed to find",
-    },
-    TARGET_DELETE_FAILED: {
-        statusCode: -5,
+    }),
+    TARGET_DELETE_FAILED: assert<TStatusResponse>({
+        statusCode: -15,
         msg: "Target failed to delete",
-    },
-    TARGET_NAME_DUPLICATE: {
-        statusCode: -6,
+    }),
+    TARGET_NAME_DUPLICATE: assert<TStatusResponse>({
+        statusCode: -16,
         msg: "Target name already exist",
-    }
+    }),
 };
 
 export const SCAN_STATUS = {
-    SESSION_INITIALIZE_SUCCEED: {
-        statusCode: 0,
+    SESSION_INITIALIZE_SUCCEED: assert<TStatusResponse>({
+        statusCode: 90,
         msg: "Scan session initialize succeed!",
-    },
-    SESSION_INITIALIZE_FAIL: {
-        statusCode: -1,
+    }),
+    SESSION_INITIALIZE_FAIL: assert<TStatusResponse>({
+        statusCode: -91,
         msg: "Scan session initialize fail!",
-    },
-    INVAVLID_URL: {
-        statusCode: -2,
+    }),
+    INVAVLID_URL: assert<TStatusResponse>({
+        statusCode: -92,
         msg: "Invalid URL!",
-    },
-    INVALID_SESSION: {
-        statusCode: -3,
+    }),
+    INVALID_SESSION: assert<TStatusResponse>({
+        statusCode: -93,
         msg: "Invalid scan session!",
-    },
+    }),
 
-    ZAP_SPIDER_INITIALIZE_FAIL: {
-        statusCode: -4,
+    ZAP_SPIDER_INITIALIZE_FAIL: assert<TStatusResponse>({
+        statusCode: -94,
         msg: "ZAP spider initialize fail!",
-    },
+    }),
 };
 
 export const LOGIN_STATUS = {
-    LOGIN_SUCCESS: {
+    LOGIN_SUCCESS: assert<TStatusResponse>({
         statusCode: 0,
         msg: "Login successfully"
-    },
-    TOKEN_NOT_FOUND: {
+    }),
+    TOKEN_NOT_FOUND: assert<TStatusResponse>({
         statusCode: -1,
         msg: "No token found",
-    },
-    TOKEN_INVALID: {
+    }),
+    TOKEN_INVALID: assert<TStatusResponse>({
         statusCode: -2,
         msg: "Invalid token",
-    },
-    USER_ADD_FAILED: {
+    }),
+    USER_ADD_FAILED: assert<TStatusResponse>({
         statusCode: -3,
         msg: "New user failed to add",
-    },
-    USER_ALREADY_LINKED: {
+    }),
+    USER_ALREADY_LINKED: assert<TStatusResponse>({
         statusCode: -4,
         msg: "Google account already used with different email",
-    },
-    EMAIL_ALREADY_USED: {
+    }),
+    EMAIL_ALREADY_USED: assert<TStatusResponse>({
         statusCode: -5,
         msg: "Email already used",
-    }
+    }),
 };
