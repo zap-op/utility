@@ -4,7 +4,7 @@ export type TTarget = {
     userId: ObjectId,
     name: string,
     target: string,
-    tag?: [string]
+    tag?: string[]
 };
 
 export type TUser = {
