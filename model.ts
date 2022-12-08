@@ -1,5 +1,6 @@
 import {ObjectId} from "bson";
 
+export const TAG_TARGET: string = "TARGET";
 export type TTarget = {
     userId: ObjectId,
     name: string,
@@ -7,6 +8,7 @@ export type TTarget = {
     tag?: string[]
 };
 
+export const TAG_USER: string = "USER";
 export type TUser = {
     sub: string,
     email: string,
@@ -17,11 +19,13 @@ export type TUser = {
     familyName: string
 };
 
+export const TAG_SCAN_SESSION: string = "SCAN_SESSION";
 export type TScanSession = {
     url: string,
     userId: ObjectId
 };
 
+export const TAG_ZAP_SPIDER_SCAN_SESSION: string = "ZAP_SPIDER_SCAN_SESSION";
 export type TZapSpiderScanSession = {
     scanConfig: {
         maxChildren?: number,
