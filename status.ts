@@ -1,6 +1,6 @@
 const assert = <T>(el: T) => el;
 
-type TStatusResponse = {
+export type TStatusResponse = {
     statusCode: number,
     msg: string,
 }
