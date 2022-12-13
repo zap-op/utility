@@ -2,10 +2,13 @@ import {ObjectId} from "bson";
 
 export const TAG_TARGET: string = "TARGET";
 export type TTarget = {
+    _id?: ObjectId,
     userId: ObjectId,
     name: string,
     target: string,
-    tag?: string[]
+    tag?: string[],
+    updatedAt?: string,
+    createdAt?: string,
 };
 
 export const TAG_USER: string = "USER";
