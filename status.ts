@@ -10,8 +10,12 @@ export const MGMT_STATUS = {
         statusCode: 10,
         msg: "Target added successfully",
     }),
-    TARGET_DELETEED: assert<TStatusResponse>({
+    TARGET_MOVED_TO_TRASH: assert<TStatusResponse>({
         statusCode: 11,
+        msg: "Target moved to trash successfully",
+    }),
+    TARGET_DELETED: assert<TStatusResponse>({
+        statusCode: 12,
         msg: "Target deleted successfully",
     }),
     TARGET_INVAVLID_URL: assert<TStatusResponse>({
