@@ -61,10 +61,25 @@ export const SCAN_STATUS = {
         statusCode: -93,
         msg: "Invalid scan session!",
     }),
-
     ZAP_SPIDER_INITIALIZE_FAIL: assert<TStatusResponse>({
         statusCode: -94,
         msg: "ZAP spider initialize fail!",
+    }),
+    ZAP_INTERNAL_ERROR: assert<TStatusResponse>({
+        statusCode: -95,
+        msg: "ZAP internal error!",
+    }),
+    INVALID_ID: assert<TStatusResponse>({
+        statusCode: -96,
+        msg: "Invalid scan id!",
+    }),
+    INVALID_RESULT_OFFSET: assert<TStatusResponse>({
+        statusCode: -97,
+        msg: "Invalid scan result offset!",
+    }),
+    INVALID_ID_OR_ZAP_INTERNAL_ERROR: assert<TStatusResponse>({
+        statusCode: -98,
+        msg: "Invalid scan id or ZAP internal error!",
     }),
 };
 
