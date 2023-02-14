@@ -37,3 +37,12 @@ export type TZapSpiderScanSession = {
         subtreeOnly?: boolean
     }
 };
+
+export const TAG_ZAP_AJAX_SCAN_SESSION: string = "ZAP_AJAX_SCAN_SESSION";
+export type TZapAjaxScanSession = {
+    scanConfig: {
+        inScope?: boolean,
+        contextName?: string,
+        subtreeOnly?: boolean
+    }
+};

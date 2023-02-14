@@ -1,4 +1,4 @@
-import { TOKEN_TYPE } from "./token";
+import {TOKEN_TYPE} from "./token";
 
 export interface JwtPayload {
     iss?: string | undefined;
