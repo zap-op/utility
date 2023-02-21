@@ -61,9 +61,9 @@ export const SCAN_STATUS = {
         statusCode: -93,
         msg: "Invalid scan session!",
     }),
-    ZAP_SPIDER_INITIALIZE_FAIL: assert<TStatusResponse>({
+    ZAP_INITIALIZE_FAIL: assert<TStatusResponse>({
         statusCode: -94,
-        msg: "ZAP spider initialize fail!",
+        msg: "ZAP scan initialize fail!",
     }),
     ZAP_INTERNAL_ERROR: assert<TStatusResponse>({
         statusCode: -95,
