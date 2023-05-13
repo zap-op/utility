@@ -2,7 +2,7 @@ import {ObjectId} from "bson";
 
 export const TAG_TARGET: string = "TARGET";
 export type TTarget = {
-    _id?: ObjectId,
+    _id: ObjectId,
     userId: ObjectId,
     name: string,
     target: string,
