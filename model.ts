@@ -8,14 +8,19 @@ export type TObject = {
 
 export type TObjectWithoutUpdate = Omit<TObject, "updatedAt">;
 
-export type TTarget = TObject & {
-	userId: ObjectId;
+//TARGET
+export type TTarget = {
 	name: string;
 	target: string;
 	tag?: string[];
 };
 
-export type TUser = TObject & {
+export type TTargetModel = TObject &
+	TTarget & {
+		userId: ObjectId;
+	};
+
+export type TUser =  {
 	sub: string;
 	email: string;
 	emailVerified: boolean;
@@ -25,12 +30,14 @@ export type TUser = TObject & {
 	familyName: string;
 };
 
+export type TUserModel = TObject & TUser
+
 export type TScanSession = {
 	url: string;
 	userId: ObjectId;
 };
 
-export type TZapSpiderScanSession = TScanSession & {
+export type TZapSpiderScanConfig = {
 	scanConfig: {
 		maxChildren?: number;
 		recurse?: boolean;
@@ -39,10 +46,14 @@ export type TZapSpiderScanSession = TScanSession & {
 	};
 };
 
-export type TZapAjaxScanSession = TScanSession & {
+export type TZapSpiderScanSession = TScanSession & TZapSpiderScanConfig;
+
+export type TZapAjaxScanConfig = {
 	scanConfig: {
 		inScope?: boolean;
 		contextName?: string;
 		subtreeOnly?: boolean;
 	};
 };
+
+export type TZapAjaxScanSession = TScanSession & TZapAjaxScanConfig;
