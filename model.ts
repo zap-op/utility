@@ -1,48 +1,59 @@
-import {ObjectId} from "bson";
+import { ObjectId } from "bson";
 
-export const TAG_TARGET: string = "TARGET";
+export type TObject = {
+	_id: ObjectId;
+	updatedAt?: string;
+	createdAt?: string;
+};
+
+export type TObjectWithoutUpdate = Omit<TObject, "updatedAt">;
+
+//TARGET
 export type TTarget = {
-    _id: ObjectId,
-    userId: ObjectId,
-    name: string,
-    target: string,
-    tag?: string[],
-    updatedAt?: string,
-    createdAt?: string,
+	name: string;
+	target: string;
+	tag?: string[];
 };
 
-export const TAG_USER: string = "USER";
-export type TUser = {
-    sub: string,
-    email: string,
-    emailVerified: boolean,
-    name: string,
-    picture: string,
-    givenName: string,
-    familyName: string
+export type TTargetModel = TObject &
+	TTarget & {
+		userId: ObjectId;
+	};
+
+export type TUser =  {
+	sub: string;
+	email: string;
+	emailVerified: boolean;
+	name: string;
+	picture: string;
+	givenName: string;
+	familyName: string;
 };
 
-export const TAG_SCAN_SESSION: string = "SCAN_SESSION";
+export type TUserModel = TObject & TUser
+
 export type TScanSession = {
-    url: string,
-    userId: ObjectId
+	url: string;
+	userId: ObjectId;
 };
 
-export const TAG_ZAP_SPIDER_SCAN_SESSION: string = "ZAP_SPIDER_SCAN_SESSION";
-export type TZapSpiderScanSession = {
-    scanConfig: {
-        maxChildren?: number,
-        recurse?: boolean,
-        contextName?: string,
-        subtreeOnly?: boolean
-    }
+export type TZapSpiderScanConfig = {
+	scanConfig: {
+		maxChildren?: number;
+		recurse?: boolean;
+		contextName?: string;
+		subtreeOnly?: boolean;
+	};
 };
 
-export const TAG_ZAP_AJAX_SCAN_SESSION: string = "ZAP_AJAX_SCAN_SESSION";
-export type TZapAjaxScanSession = {
-    scanConfig: {
-        inScope?: boolean,
-        contextName?: string,
-        subtreeOnly?: boolean
-    }
+export type TZapSpiderScanSession = TScanSession & TZapSpiderScanConfig;
+
+export type TZapAjaxScanConfig = {
+	scanConfig: {
+		inScope?: boolean;
+		contextName?: string;
+		subtreeOnly?: boolean;
+	};
 };
+
+export type TZapAjaxScanSession = TScanSession & TZapAjaxScanConfig;
