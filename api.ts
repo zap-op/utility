@@ -1,5 +1,6 @@
 import { ObjectId } from "bson";
-import { TScanSession, TStatusResponse, TZapSpiderScanConfig } from "./types";
+import { TStatusResponse } from "./status";
+import { TScanSession, TZapSpiderScanConfig } from "./model";
 
 export enum HTTPMethod {
 	GET,
