@@ -15,7 +15,7 @@ export type TTarget = {
 	tag?: string[];
 };
 
-export type TTargetModel = TObject &
+export type TTargetModel = Required<TObject> &
 	TTarget & {
 		userId: ObjectId;
 	};
