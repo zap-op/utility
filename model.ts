@@ -37,6 +37,14 @@ export type TScanSession = {
 	userId: ObjectId;
 };
 
+export type TZapScanFullResults = {
+	fullResults: {
+		urlsInScope: any[];
+		urlsOutOfScope: any[]; 
+		urlsIoError: any[];
+	}
+};
+
 export type TZapSpiderScanConfig = {
 	scanConfig: {
 		maxChildren?: number;
@@ -46,7 +54,7 @@ export type TZapSpiderScanConfig = {
 	};
 };
 
-export type TZapSpiderScanSession = TScanSession & TZapSpiderScanConfig;
+export type TZapSpiderScanSession = TScanSession & TZapSpiderScanConfig & TZapScanFullResults;
 
 export type TZapAjaxScanConfig = {
 	scanConfig: {
@@ -56,4 +64,4 @@ export type TZapAjaxScanConfig = {
 	};
 };
 
-export type TZapAjaxScanSession = TScanSession & TZapAjaxScanConfig;
+export type TZapAjaxScanSession = TScanSession & TZapAjaxScanConfig & TZapScanFullResults;
