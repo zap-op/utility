@@ -20,7 +20,7 @@ export type TTargetModel = Required<TObject> &
 		userId: ObjectId;
 	};
 
-export type TUser =  {
+export type TUser = {
 	sub: string;
 	email: string;
 	emailVerified: boolean;
@@ -30,20 +30,23 @@ export type TUser =  {
 	familyName: string;
 };
 
-export type TUserModel = TObject & TUser
+export type TUserModel = TObject & TUser;
 
 export type TScanSession = {
 	url: string;
 	userId: ObjectId;
+	targetId: ObjectId;
 };
 
-export type TZapScanFullResults = {
+export type TZapSpiderScanFullResults = {
 	fullResults: {
 		urlsInScope: any[];
-		urlsOutOfScope: any[]; 
+		urlsOutOfScope: any[];
 		urlsIoError: any[];
-	}
+	};
 };
+
+export type TZapAjaxScanFullResults = TZapSpiderScanFullResults;
 
 export type TZapSpiderScanConfig = {
 	scanConfig: {
@@ -54,7 +57,10 @@ export type TZapSpiderScanConfig = {
 	};
 };
 
-export type TZapSpiderScanSession = TScanSession & TZapSpiderScanConfig & TZapScanFullResults;
+export type TZapSpiderScanSessionModel = TObject &
+	TScanSession &
+	TZapSpiderScanConfig &
+	TZapSpiderScanFullResults;
 
 export type TZapAjaxScanConfig = {
 	scanConfig: {
@@ -64,4 +70,7 @@ export type TZapAjaxScanConfig = {
 	};
 };
 
-export type TZapAjaxScanSession = TScanSession & TZapAjaxScanConfig & TZapScanFullResults;
+export type TZapAjaxScanSessionModel = TObject & 
+	TScanSession & 
+	TZapAjaxScanConfig & 
+	TZapAjaxScanFullResults;

@@ -1,6 +1,6 @@
 import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
-import { TScanSession, TZapSpiderScanConfig } from "./model";
+import { TObject, TScanSession, TZapSpiderScanConfig } from "./model";
 
 export enum HTTPMethod {
 	GET,
@@ -62,7 +62,7 @@ export type TZapSpiderTrialResultsGETResponse = string[];
 export type TZapSpiderRequest<T extends TGET | TPOST> = T extends TGET
 	? TAuthScanSession //
 	: T extends TPOST
-	? Pick<TScanSession, "url"> & TZapSpiderScanConfig
+	? Pick<TObject, "_id"> & TZapSpiderScanConfig
 	: undefined;
 
 /**
