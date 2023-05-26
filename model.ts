@@ -8,7 +8,6 @@ export type TObject = {
 
 export type TObjectWithoutUpdate = Omit<TObject, "updatedAt">;
 
-//TARGET
 export type TTarget = {
 	name: string;
 	target: string;
@@ -38,16 +37,6 @@ export type TScanSession = {
 	targetId: ObjectId;
 };
 
-export type TZapSpiderScanFullResults = {
-	fullResults: {
-		urlsInScope: any[];
-		urlsOutOfScope: any[];
-		urlsIoError: any[];
-	};
-};
-
-export type TZapAjaxScanFullResults = TZapSpiderScanFullResults;
-
 export type TZapSpiderScanConfig = {
 	scanConfig: {
 		maxChildren?: number;
@@ -59,8 +48,7 @@ export type TZapSpiderScanConfig = {
 
 export type TZapSpiderScanSessionModel = TObject &
 	TScanSession &
-	TZapSpiderScanConfig &
-	TZapSpiderScanFullResults;
+	TZapSpiderScanConfig;
 
 export type TZapAjaxScanConfig = {
 	scanConfig: {
@@ -72,5 +60,20 @@ export type TZapAjaxScanConfig = {
 
 export type TZapAjaxScanSessionModel = TObject & 
 	TScanSession & 
-	TZapAjaxScanConfig & 
-	TZapAjaxScanFullResults;
+	TZapAjaxScanConfig;
+
+export type TScanFullResults = {
+	sessionId: ObjectId;
+};
+
+export type TZapScanFullResults = TScanFullResults & {
+	fullResults: {
+		urlsInScope: any[];
+		urlsOutOfScope: any[];
+		urlsError: any[];
+	};
+};
+
+export type TZapSpiderScanFullResultsModel = TObject & TZapScanFullResults;
+
+export type TZapAjaxScanFullResultsModel = TObject & TZapScanFullResults;
