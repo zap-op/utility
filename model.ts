@@ -6,6 +6,10 @@ export type TObject = {
 	createdAt?: string;
 };
 
+export type TDiscriminator = {
+	__t: string;
+};
+
 export type TObjectWithoutUpdate = Omit<TObject, "updatedAt">;
 
 export type TTarget = {
@@ -36,7 +40,9 @@ export type TScanSession = {
 	targetPop: ObjectId;
 };
 
-export type TScanSessionModel = TObject & TScanSession;
+export type TScanSessionModel = Required<TObject> & //
+	TDiscriminator &
+	TScanSession;
 
 export type TZapSpiderScanConfig = {
 	scanConfig: {

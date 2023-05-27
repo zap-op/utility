@@ -35,9 +35,9 @@ export type TZapAjaxFullResultsConfig = {
 /**
  * Request - GET - /management/scanSessions
  */
-export type TMgmtScanSessionsResponse = Omit<TScanSessionModel, "targetPop"> & {
+export type TMgmtScanSessionsResponse = (Omit<TScanSessionModel, "targetPop"> & {
 	targetPop: Pick<TTarget, "name" | "target">;
-};
+})[];
 
 // /scan/trial
 /**
