@@ -1,6 +1,10 @@
 import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
-import { TObject, TScanSession, TZapSpiderScanConfig } from "./model";
+import {
+	TObject, //
+	TTarget,
+	TZapSpiderScanConfig,
+} from "./model";
 
 export enum HTTPMethod {
 	GET,
@@ -30,7 +34,7 @@ export type TZapAjaxFullResultsConfig = {
 /**
  * Request - GET - /scan/trial
  */
-export type TZapSpiderTrialGETRequest = Pick<TScanSession, "url">;
+export type TZapSpiderTrialGETRequest = Pick<TTarget, "target">;
 
 /**
  * Response - GET - /scan/trial

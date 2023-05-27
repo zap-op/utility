@@ -32,9 +32,8 @@ export type TUser = {
 export type TUserModel = TObject & TUser;
 
 export type TScanSession = {
-	url: string;
-	userId: ObjectId;
-	targetId: ObjectId;
+	userPop: ObjectId;
+	targetPop: ObjectId;
 };
 
 export type TZapSpiderScanConfig = {
