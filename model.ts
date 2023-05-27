@@ -36,6 +36,8 @@ export type TScanSession = {
 	targetPop: ObjectId;
 };
 
+export type TScanSessionModel = TObject & TScanSession;
+
 export type TZapSpiderScanConfig = {
 	scanConfig: {
 		maxChildren?: number;
@@ -45,7 +47,7 @@ export type TZapSpiderScanConfig = {
 	};
 };
 
-export type TZapSpiderScanSessionModel = TObject &
+export type TZapSpiderScanSessionModel = TObject & //
 	TScanSession &
 	TZapSpiderScanConfig;
 
@@ -57,8 +59,8 @@ export type TZapAjaxScanConfig = {
 	};
 };
 
-export type TZapAjaxScanSessionModel = TObject & 
-	TScanSession & 
+export type TZapAjaxScanSessionModel = TObject & //
+	TScanSession &
 	TZapAjaxScanConfig;
 
 export type TScanFullResults = {

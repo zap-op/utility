@@ -1,7 +1,8 @@
 import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
 import {
-	TObject, //
+	TObject,
+	TScanSessionModel, //
 	TTarget,
 	TZapSpiderScanConfig,
 } from "./model";
@@ -28,6 +29,14 @@ export type TZapAjaxFullResultsConfig = {
 	inScope: number;
 	outOfScope: number;
 	errors: number;
+};
+
+// /management/scanSessions
+/**
+ * Request - GET - /management/scanSessions
+ */
+export type TMgmtScanSessionsResponse = Omit<TScanSessionModel, "targetPop"> & {
+	targetPop: Pick<TTarget, "name" | "target">;
 };
 
 // /scan/trial
