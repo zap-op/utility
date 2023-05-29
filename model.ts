@@ -1,4 +1,5 @@
 import { ObjectId } from "bson";
+import { ScanState } from "./status";
 
 export type TObject = {
 	_id: ObjectId;
@@ -38,6 +39,11 @@ export type TUserModel = TObject & TUser;
 export type TScanSession = {
 	userPop: ObjectId;
 	targetPop: ObjectId;
+	scanId: number,
+	status: {
+		state: ScanState;
+		message: string;
+	};
 };
 
 export type TScanSessionModel = Required<TObject> & //

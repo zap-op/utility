@@ -5,7 +5,7 @@ export enum ScanState {
     SUCCESSFUL = "SUCCESSFUL",
     FAILED = "FAILED"
 }
-
+ 
 export type TStatusResponse = {
     statusCode: number,
     msg: string,
