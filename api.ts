@@ -88,7 +88,7 @@ export type TZapSpiderResponse<T extends TGET | TPOST> = T extends TGET
 			isScanning: boolean;
 	  } & TErrorInjected
 	: T extends TPOST
-	? TAuthScanSession
+	? TStatusResponse
 	: undefined;
 
 // /scan/zap/spider/results
