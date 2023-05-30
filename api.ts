@@ -22,8 +22,14 @@ export type TLoginResponse = TStatusResponse;
 
 export type TAuthScanSession = {
 	scanSession: ObjectId;
-	scanId: string; // number as string
+	scanId: number; // number as string
 };
+
+export type TStreamScanResponse = {
+	data: string[];
+	progress: number;
+	isScanning: boolean;
+} & TErrorInjected;
 
 export type TZapAjaxFullResultsConfig = {
 	inScope: number;
@@ -48,11 +54,7 @@ export type TZapSpiderTrialGETRequest = Pick<TTarget, "target">;
 /**
  * Response - GET - /scan/trial
  */
-export type TZapSpiderTrialGETResponse = {
-	data: string[];
-	progress: number;
-	isScanning: boolean;
-} & TErrorInjected;
+export type TZapSpiderTrialGETResponse = TStreamScanResponse;
 
 // /scan/trial/results
 /**
@@ -82,11 +84,7 @@ export type TZapSpiderRequest<T extends TGET | TPOST> = T extends TGET
  * Response - GET | POST - /scan/zap/spider
  */
 export type TZapSpiderResponse<T extends TGET | TPOST> = T extends TGET
-	? {
-			data: string[];
-			progress: number;
-			isScanning: boolean;
-	  } & TErrorInjected
+	? TStreamScanResponse //
 	: T extends TPOST
 	? TStatusResponse
 	: undefined;
