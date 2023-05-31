@@ -4,6 +4,7 @@ import {
 	TObject,
 	TScanSessionModel, //
 	TTarget,
+	TZapAjaxScanConfig,
 	TZapSpiderScanConfig,
 } from "./model";
 
@@ -116,3 +117,33 @@ export type TZapSpiderFullResultsGETRequest = Pick<TAuthScanSession, "scanId"> &
  * Response - GET - /scan/zap/spider/fullResults
  */
 export type TZapSpiderFullResultsGETResponse = any; // Updating...
+
+// /scan/zap/ajax
+/**
+ * Request - GET | POST - /scan/zap/ajax
+ */
+export type TZapAjaxRequest<T extends TGET | TPOST> = T extends TGET
+	? TAuthScanSession //
+	: T extends TPOST
+	? Pick<TObject, "_id"> & TZapAjaxScanConfig
+	: undefined;
+
+/**
+ * Response - GET | POST - /scan/zap/spider
+ */
+export type TZapAjaxResponse<T extends TGET | TPOST> = T extends TGET
+	? TStreamScanResponse //
+	: T extends TPOST
+	? TStatusResponse
+	: undefined;
+
+// /scan/zap/ajax/results
+/**
+ * Request - GET - /scan/zap/ajax/results
+ */
+export type TZapAjaxResultsGETRequest = TZapSpiderTrialResultsGETRequest;
+
+/**
+ * Response - GET - /scan/zap/ajax/results
+ */
+export type TZapAjaxResultsGETResponse = TZapSpiderTrialResultsGETResponse;
