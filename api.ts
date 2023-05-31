@@ -22,7 +22,7 @@ export type TLoginResponse = TStatusResponse;
 
 export type TAuthScanSession = {
 	scanSession: ObjectId;
-	scanId: number; // number as string
+	scanId: string; // number as string
 };
 
 export type TStreamScanResponse = {

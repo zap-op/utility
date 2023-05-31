@@ -39,7 +39,7 @@ export type TUserModel = TObject & TUser;
 export type TScanSession = {
 	userPop: ObjectId;
 	targetPop: ObjectId;
-	scanId: number,
+	scanId: string,
 	status: {
 		state: ScanState;
 		message: string;
