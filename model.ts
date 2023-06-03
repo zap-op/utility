@@ -39,7 +39,7 @@ export type TUserModel = TObject & TUser;
 export type TScanSession = {
 	userPop: ObjectId;
 	targetPop: ObjectId;
-	scanId: string,
+	scanId: string;
 	status: {
 		state: ScanState;
 		message: string;
@@ -62,6 +62,8 @@ export type TZapSpiderScanConfig = {
 export type TZapSpiderScanSessionModel = TObject & //
 	TScanSession &
 	TZapSpiderScanConfig;
+
+export type TZapAjaxStreamStatus = "running" | "stopped";
 
 export type TZapAjaxScanConfig = {
 	scanConfig: {
