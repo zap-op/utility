@@ -1,9 +1,14 @@
 import { ObjectId } from "bson";
+import { ScanState } from "./status";
 
 export type TObject = {
 	_id: ObjectId;
 	updatedAt?: string;
 	createdAt?: string;
+};
+
+export type TDiscriminator = {
+	__t: string;
 };
 
 export type TObjectWithoutUpdate = Omit<TObject, "updatedAt">;
@@ -32,10 +37,18 @@ export type TUser = {
 export type TUserModel = TObject & TUser;
 
 export type TScanSession = {
-	url: string;
-	userId: ObjectId;
-	targetId: ObjectId;
+	userPop: ObjectId;
+	targetPop: ObjectId;
+	scanId: string;
+	status: {
+		state: ScanState;
+		message: string;
+	};
 };
+
+export type TScanSessionModel = Required<TObject> & //
+	TDiscriminator &
+	TScanSession;
 
 export type TZapSpiderScanConfig = {
 	scanConfig: {
@@ -46,9 +59,11 @@ export type TZapSpiderScanConfig = {
 	};
 };
 
-export type TZapSpiderScanSessionModel = TObject &
+export type TZapSpiderScanSessionModel = TObject & //
 	TScanSession &
 	TZapSpiderScanConfig;
+
+export type TZapAjaxStreamStatus = "running" | "stopped";
 
 export type TZapAjaxScanConfig = {
 	scanConfig: {
@@ -58,8 +73,8 @@ export type TZapAjaxScanConfig = {
 	};
 };
 
-export type TZapAjaxScanSessionModel = TObject & 
-	TScanSession & 
+export type TZapAjaxScanSessionModel = TObject & //
+	TScanSession &
 	TZapAjaxScanConfig;
 
 export type TScanFullResults = {

@@ -1,5 +1,11 @@
 const assert = <T>(el: T) => el;
 
+export enum ScanState {
+    PROCESSING = "PROCESSING",
+    SUCCESSFUL = "SUCCESSFUL",
+    FAILED = "FAILED"
+}
+ 
 export type TStatusResponse = {
     statusCode: number,
     msg: string,
