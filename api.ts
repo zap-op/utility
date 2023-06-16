@@ -1,13 +1,6 @@
 import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
-import {
-	TTarget, //
-	TObject,
-	TScanSessionModel,
-	TZapAjaxScanConfig,
-	TZapAjaxStreamStatus,
-	TZapSpiderScanConfig,
-} from "./model";
+import { TTarget, TObject, TScanSessionModel, TZapAjaxScanConfig, TZapAjaxStreamStatus, TZapSpiderScanConfig } from "./model";
 
 export enum HTTPMethod {
 	GET,

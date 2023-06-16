@@ -39,11 +39,12 @@ export type TUserModel = TObject & TUser;
 export type TScanSession = {
 	userPop: ObjectId;
 	targetPop: ObjectId;
-	scanId: string;
 	status: {
 		state: ScanState;
 		message: string;
 	};
+	zapClientId: string;
+	zapScanId: string;
 };
 
 export type TScanSessionModel = Required<TObject> & //
@@ -59,9 +60,7 @@ export type TZapSpiderScanConfig = {
 	};
 };
 
-export type TZapSpiderScanSessionModel = TObject & //
-	TScanSession &
-	TZapSpiderScanConfig;
+export type TZapSpiderScanSessionModel = TObject & TScanSession & TZapSpiderScanConfig;
 
 export type TZapAjaxStreamStatus = "running" | "stopped";
 
@@ -73,15 +72,37 @@ export type TZapAjaxScanConfig = {
 	};
 };
 
-export type TZapAjaxScanSessionModel = TObject & //
-	TScanSession &
-	TZapAjaxScanConfig;
+export type TZapAjaxScanSessionModel = TObject & TScanSession & TZapAjaxScanConfig;
+
+export type TZapPassiveScanConfig = {
+	exploreType: "spider" | "ajax";
+	spiderConfig?: TZapSpiderScanConfig["scanConfig"];
+	ajaxConfig?: TZapAjaxScanConfig["scanConfig"];
+};
+
+export type TZapPassiveScanSessionModel = TObject & TScanSession & TZapPassiveScanConfig;
+
+export type TZapActiveScanConfig = {
+	exploreType: "spider" | "ajax";
+	spiderConfig?: TZapSpiderScanConfig["scanConfig"];
+	ajaxConfig?: TZapAjaxScanConfig["scanConfig"];
+	scanConfig: {
+		recurse?: boolean;
+		inScopeOnly?: boolean;
+		scanPolicyName?: string;
+		method?: string;
+		postData?: string;
+		contextId?: string;
+	};
+};
+
+export type TZapActiveScanSessionModel = TObject & TScanSession & TZapActiveScanConfig;
 
 export type TScanFullResults = {
 	sessionId: ObjectId;
 };
 
-export type TZapScanFullResults = TScanFullResults & {
+export type TZapSpiderScanFullResults = TScanFullResults & {
 	fullResults: {
 		urlsInScope: any[];
 		urlsOutOfScope: any[];
@@ -89,6 +110,30 @@ export type TZapScanFullResults = TScanFullResults & {
 	};
 };
 
-export type TZapSpiderScanFullResultsModel = TObject & TZapScanFullResults;
+export type TZapAjaxScanFullResults = TScanFullResults & {
+	fullResults: {
+		urlsInScope: any[];
+		urlsOutOfScope: any[];
+		urlsError: any[];
+	};
+};
 
-export type TZapAjaxScanFullResultsModel = TObject & TZapScanFullResults;
+export type TZapPassiveScanFullResults = TScanFullResults & {
+	fullResults: {
+		data: any[];
+	};
+};
+
+export type TZapActiveScanFullResults = TScanFullResults & {
+	fullResults: {
+		data: any[];
+	};
+};
+
+export type TZapSpiderScanFullResultsModel = TObject & TZapSpiderScanFullResults;
+
+export type TZapAjaxScanFullResultsModel = TObject & TZapAjaxScanFullResults;
+
+export type TZapPassiveScanFullResultsModel = TObject & TZapPassiveScanFullResults;
+
+export type TZapActiveScanFullResultsModel = TObject & TZapActiveScanFullResults;
