@@ -39,7 +39,7 @@ export type TZapAjaxFullResultsConfig = {
  * Request - GET - /management/scanSessions
  */
 export type TMgmtScanSessionsResponse = (Omit<TScanSessionModel, "targetPop"> & {
-	targetPop: Pick<TTarget, "name" | "target">;
+	targetPop: TTarget;
 })[];
 
 // TRIAL
@@ -170,11 +170,9 @@ export type TZapAjaxFullResultsParams = {
 	errors: number;
 };
 
-export type TZapAjaxFullResultGETRequest = Pick<TScanSession, "zapClientId"> & //
-	TZapAjaxFullResultsParams;
+export type TZapAjaxFullResultGETRequest = Pick<TAuthScanSession, "scanSession">
 
-	
 /**
  * Response - GET - /scan/zap/ajax/fullResults
  */
-export type TZapAjaxFullResultsGETResponse = any
+export type TZapAjaxFullResultsGETResponse = any;
