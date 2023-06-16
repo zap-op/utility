@@ -1,6 +1,14 @@
 import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
-import { TTarget, TObject, TScanSessionModel, TZapAjaxScanConfig, TZapAjaxStreamStatus, TZapSpiderScanConfig } from "./model";
+import {
+	TTarget, //
+	TObject,
+	TScanSession,
+	TScanSessionModel,
+	TZapAjaxScanConfig,
+	TZapAjaxStreamStatus,
+	TZapSpiderScanConfig,
+} from "./model";
 
 export enum HTTPMethod {
 	GET,
@@ -151,3 +159,22 @@ export type TZapAjaxResultsGETRequest = TZapSpiderTrialResultsGETRequest;
  * Response - GET - /scan/zap/ajax/results
  */
 export type TZapAjaxResultsGETResponse = TZapSpiderTrialResultsGETResponse;
+
+// /scan/zap/ajax/fullResults
+/**
+ * Request - GET - /scan/zap/ajax/fullResults
+ */
+export type TZapAjaxFullResultsParams = {
+	inScope: number;
+	outOfScope: number;
+	errors: number;
+};
+
+export type TZapAjaxFullResultGETRequest = Pick<TScanSession, "zapClientId"> & //
+	TZapAjaxFullResultsParams;
+
+	
+/**
+ * Response - GET - /scan/zap/ajax/fullResults
+ */
+export type TZapAjaxFullResultsGETResponse = any
