@@ -102,6 +102,15 @@ export type TScanFullResults = {
 	sessionId: ObjectId;
 };
 
+export type TURLResults = {
+	messageId: string; //as number
+	method: string;
+	state: string;
+	statusCode: string; //as number
+	statusReason: string;
+	url: string;
+};
+
 export type TZapSpiderScanFullResults = TScanFullResults & {
 	fullResults: {
 		urlsInScope: any[];
@@ -112,9 +121,9 @@ export type TZapSpiderScanFullResults = TScanFullResults & {
 
 export type TZapAjaxScanFullResults = TScanFullResults & {
 	fullResults: {
-		urlsInScope: any[];
-		urlsOutOfScope: any[];
-		urlsError: any[];
+		urlsInScope: TURLResults[];
+		urlsOutOfScope: TURLResults[];
+		urlsError: TURLResults[];
 	};
 };
 
