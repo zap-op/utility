@@ -3,11 +3,12 @@ import { TStatusResponse } from "./status";
 import {
 	TTarget, //
 	TObject,
-	TScanSession,
 	TScanSessionModel,
 	TZapAjaxScanConfig,
 	TZapAjaxStreamStatus,
 	TZapSpiderScanConfig,
+	TZapSpiderScanFullResultsModel,
+	TZapAjaxScanFullResultsModel,
 } from "./model";
 
 export enum HTTPMethod {
@@ -23,10 +24,7 @@ export type TErrorInjected = {
 
 export type TLoginResponse = TStatusResponse;
 
-export type TAuthScanSession = {
-	scanSession: ObjectId;
-	scanId: string; // number as string
-};
+export type TAuthScanSession = Pick<TScanSessionModel, "_id" | "zapScanId" | "zapClientId">;
 
 export type TZapAjaxFullResultsConfig = {
 	inScope: number;
@@ -80,7 +78,7 @@ export type TZapSpiderTrialResultsGETResponse = string[];
  * Request - GET | POST - /scan/zap/spider
  */
 export type TZapSpiderRequest<T extends TGET | TPOST> = T extends TGET
-	? TAuthScanSession //
+	? Omit<TAuthScanSession, "zapClientId"> //
 	: T extends TPOST
 	? Pick<TObject, "_id"> & TZapSpiderScanConfig
 	: undefined;
@@ -115,12 +113,12 @@ export type TZapSpiderFullResultsParams = {
 /**
  * Request - GET - /scan/zap/spider/fullResults
  */
-export type TZapSpiderFullResultsGETRequest = Pick<TAuthScanSession, "scanId"> & TZapSpiderFullResultsParams;
+export type TZapSpiderFullResultsGETRequest = Pick<TAuthScanSession, "_id">;
 
 /**
  * Response - GET - /scan/zap/spider/fullResults
  */
-export type TZapSpiderFullResultsGETResponse = any; // Updating...
+export type TZapSpiderFullResultsGETResponse = TZapSpiderScanFullResultsModel;
 
 // AJAX
 
@@ -141,7 +139,7 @@ export type TZapAjaxRequest<T extends TGET | TPOST> = T extends TGET
 	: undefined;
 
 /**
- * Response - GET | POST - /scan/zap/spider
+ * Response - GET | POST - /scan/zap/ajax
  */
 export type TZapAjaxResponse<T extends TGET | TPOST> = T extends TGET
 	? TZapAjaxGETResponse //
@@ -170,9 +168,58 @@ export type TZapAjaxFullResultsParams = {
 	errors: number;
 };
 
-export type TZapAjaxFullResultGETRequest = Pick<TAuthScanSession, "scanSession">
+export type TZapAjaxFullResultGETRequest = Pick<TAuthScanSession, "_id">;
 
 /**
  * Response - GET - /scan/zap/ajax/fullResults
  */
-export type TZapAjaxFullResultsGETResponse = any;
+export type TZapAjaxFullResultsGETResponse = TZapAjaxScanFullResultsModel;
+
+// ACTIVE
+
+export type TZapAtiveGETResponse = {
+	data: string[];
+	progress: number;
+	isScanning: boolean;
+} & TErrorInjected;
+
+// /scan/zap/active
+/**
+ * Request - GET | POST - /scan/zap/active
+ */
+export type TZapActiveRequest<T extends TGET | TPOST> = T extends TGET
+	? TAuthScanSession //
+	: T extends TPOST
+	? Pick<TObject, "_id">
+	: undefined;
+
+/**
+ * Response - GET | POST - /scan/zap/spider
+ */
+export type TZapActiveResponse<T extends TGET | TPOST> = T extends TGET
+	? TZapAjaxGETResponse //
+	: T extends TPOST
+	? TStatusResponse
+	: undefined;
+
+// /scan/zap/active/results
+/**
+ * Request - GET - /scan/zap/active/results
+ */
+export type TZapActiveResultsGETRequest = any;
+
+/**
+ * Response - GET - /scan/zap/active/results
+ */
+export type TZapActiveResultsGETResponse = any;
+
+// /scan/zap/active/fullResults
+/**
+ * Request - GET - /scan/zap/active/fullResults
+ */
+export type TZapAtiveFullResultGETRequest = Pick<TAuthScanSession, "_id">;
+
+/**
+ * Response - GET - /scan/zap/active/fullResults
+ */
+export type TZapAtiveFullResultsGETResponse = any;
