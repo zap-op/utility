@@ -71,7 +71,7 @@ export type TZapSpiderTrialResultsGETRequest = {
  */
 export type TZapSpiderTrialResultsGETResponse = string[];
 
-// SPIDER
+//------------------------------------------------SPIDER-------------------------------------------------
 
 // /scan/zap/spider
 /**
@@ -120,7 +120,7 @@ export type TZapSpiderFullResultsGETRequest = Pick<TAuthScanSession, "_id">;
  */
 export type TZapSpiderFullResultsGETResponse = TZapSpiderScanFullResultsModel;
 
-// AJAX
+//------------------------------------------------AJAX-------------------------------------------------
 
 export type TZapAjaxGETResponse = {
 	data: string[];
@@ -175,7 +175,7 @@ export type TZapAjaxFullResultGETRequest = Pick<TAuthScanSession, "_id">;
  */
 export type TZapAjaxFullResultsGETResponse = TZapAjaxScanFullResultsModel;
 
-// ACTIVE
+//------------------------------------------------ACTIVE-------------------------------------------------
 
 export type TZapAtiveGETResponse = {
 	data: string[];
