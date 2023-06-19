@@ -9,6 +9,8 @@ import {
 	TZapSpiderScanConfig,
 	TZapSpiderScanFullResultsModel,
 	TZapAjaxScanFullResultsModel,
+	TZapActiveScanConfig,
+	TZapActiveScanFullResultsModel,
 } from "./model";
 
 export enum HTTPMethod {
@@ -190,14 +192,14 @@ export type TZapAtiveGETResponse = {
 export type TZapActiveRequest<T extends TGET | TPOST> = T extends TGET
 	? TAuthScanSession //
 	: T extends TPOST
-	? Pick<TObject, "_id">
+	? Pick<TObject, "_id"> & TZapActiveScanConfig
 	: undefined;
 
 /**
  * Response - GET | POST - /scan/zap/spider
  */
 export type TZapActiveResponse<T extends TGET | TPOST> = T extends TGET
-	? TZapAjaxGETResponse //
+	? TZapAtiveGETResponse //
 	: T extends TPOST
 	? TStatusResponse
 	: undefined;
@@ -217,9 +219,9 @@ export type TZapActiveResultsGETResponse = any;
 /**
  * Request - GET - /scan/zap/active/fullResults
  */
-export type TZapAtiveFullResultGETRequest = Pick<TAuthScanSession, "_id">;
+export type TZapActiveFullResultGETRequest = Pick<TAuthScanSession, "_id">;
 
 /**
  * Response - GET - /scan/zap/active/fullResults
  */
-export type TZapAtiveFullResultsGETResponse = any;
+export type TZapActiveFullResultsGETResponse = TZapActiveScanFullResultsModel;

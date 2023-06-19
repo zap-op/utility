@@ -202,8 +202,8 @@ export type TZapActiveScanSessionModel = TObject & TScanSession & TZapActiveScan
 
 export type TZapActiveScanFullResults = TScanFullResults & {
 	fullResults: {
-		alertsByRisk: any;
-		alerts: any[];
+		alertsByRisk: TAlertsByRisk;
+		alerts: TAlertDetail[];
 	};
 };
 
