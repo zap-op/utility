@@ -52,7 +52,7 @@ export type TScanSessionModel = Required<TObject> & //
 	TScanSession;
 
 export type TScanFullResults = {
-	sessionId: ObjectId;
+	sessionPop: ObjectId;
 };
 
 export type TURLResults = {
