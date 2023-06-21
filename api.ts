@@ -11,6 +11,8 @@ import {
 	TZapAjaxScanFullResultsModel,
 	TZapActiveScanConfig,
 	TZapActiveScanFullResultsModel,
+	TZapPassiveScanConfig,
+	TZapPassiveScanFullResultsModel,
 } from "./model";
 
 export enum HTTPMethod {
@@ -177,9 +179,47 @@ export type TZapAjaxFullResultGETRequest = Pick<TAuthScanSession, "_id">;
  */
 export type TZapAjaxFullResultsGETResponse = TZapAjaxScanFullResultsModel;
 
+//------------------------------------------------PASSIVE-------------------------------------------------
+
+export type TZapPassiveGETResponse = {
+	data: string[];
+	progress: number;
+	isScanning: boolean;
+} & TErrorInjected;
+
+// /scan/zap/passive
+/**
+ * Request - GET | POST - /scan/zap/passive
+ */
+export type TZapPassiveRequest<T extends TGET | TPOST> = T extends TGET
+	? TAuthScanSession //
+	: T extends TPOST
+	? Pick<TObject, "_id"> & TZapPassiveScanConfig
+	: undefined;
+
+/**
+ * Response - GET | POST - /scan/zap/passive
+ */
+export type TZapPassiveResponse<T extends TGET | TPOST> = T extends TGET
+	? TZapPassiveGETResponse //
+	: T extends TPOST
+	? TStatusResponse
+	: undefined;
+
+// /scan/zap/passive/fullResults
+/**
+ * Request - GET - /scan/zap/passive/fullResults
+ */
+export type TZapPassiveFullResultGETRequest = Pick<TAuthScanSession, "_id">;
+
+/**
+ * Response - GET - /scan/zap/passive/fullResults
+ */
+export type TZapPassiveFullResultsGETResponse = TZapPassiveScanFullResultsModel;
+
 //------------------------------------------------ACTIVE-------------------------------------------------
 
-export type TZapAtiveGETResponse = {
+export type TZapActiveGETResponse = {
 	data: string[];
 	progress: number;
 	isScanning: boolean;
@@ -196,10 +236,10 @@ export type TZapActiveRequest<T extends TGET | TPOST> = T extends TGET
 	: undefined;
 
 /**
- * Response - GET | POST - /scan/zap/spider
+ * Response - GET | POST - /scan/zap/active
  */
 export type TZapActiveResponse<T extends TGET | TPOST> = T extends TGET
-	? TZapAtiveGETResponse //
+	? TZapActiveGETResponse //
 	: T extends TPOST
 	? TStatusResponse
 	: undefined;
