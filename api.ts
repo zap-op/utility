@@ -107,12 +107,6 @@ export type TZapSpiderResultsGETRequest = TZapSpiderTrialResultsGETRequest;
  */
 export type TZapSpiderResultsGETResponse = TZapSpiderTrialResultsGETResponse;
 
-export type TZapSpiderFullResultsParams = {
-	urlsInScopeOffset: number;
-	urlsOutOfScopeOffset: number;
-	urlsIoErrorOffset: number;
-};
-
 // /scan/zap/spider/fullResults
 /**
  * Request - GET - /scan/zap/spider/fullResults
