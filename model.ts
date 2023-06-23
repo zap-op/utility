@@ -176,7 +176,8 @@ export type TZapPassiveScanSessionModel = TObject & TScanSession & TZapPassiveSc
 
 export type TZapPassiveScanFullResults = TScanFullResults & {
 	fullResults: {
-		data: any[];
+		alertsByRisk: TAlertsByRisk;
+		alerts: TAlertDetail[];
 	};
 };
 
