@@ -55,15 +55,6 @@ export type TScanFullResults = {
 	sessionPop: ObjectId;
 };
 
-export type TURLResults = {
-	messageId: string; //as number
-	method: string;
-	state: string;
-	statusCode: string; //as number
-	statusReason: string;
-	url: string;
-};
-
 export enum RiskLevel {
 	HIGH = "High",
 	MEDIUM = "Medium",
@@ -130,11 +121,21 @@ export type TZapSpiderScanConfig = {
 
 export type TZapSpiderScanSessionModel = TObject & TScanSession & TZapSpiderScanConfig;
 
+export type TZapSpiderUrlInScope = {
+	processed: string;
+	statusReason: string;
+	method: string;
+	reasonNotProcessed: string;
+	messageId: string;
+	url: string;
+	statusCode: string;
+};
+
 export type TZapSpiderScanFullResults = TScanFullResults & {
 	fullResults: {
-		urlsInScope: TURLResults[];
-		urlsOutOfScope: TURLResults[];
-		urlsError: TURLResults[];
+		urlsInScope: TZapSpiderUrlInScope[];
+		urlsOutOfScope: string[];
+		urlsIoError: any[];
 	};
 };
 
@@ -154,11 +155,20 @@ export type TZapAjaxScanConfig = {
 
 export type TZapAjaxScanSessionModel = TObject & TScanSession & TZapAjaxScanConfig;
 
+export type TZapSpiderUrlResult = {
+	messageId: string; //as number
+	method: string;
+	state: string;
+	statusCode: string; //as number
+	statusReason: string;
+	url: string;
+};
+
 export type TZapAjaxScanFullResults = TScanFullResults & {
 	fullResults: {
-		urlsInScope: TURLResults[];
-		urlsOutOfScope: TURLResults[];
-		urlsError: TURLResults[];
+		inScope: TZapSpiderUrlResult[];
+		outOfScope: TZapSpiderUrlResult[];
+		errors: any[];
 	};
 };
 
