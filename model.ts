@@ -155,19 +155,18 @@ export type TZapAjaxScanConfig = {
 
 export type TZapAjaxScanSessionModel = TObject & TScanSession & TZapAjaxScanConfig;
 
-export type TZapSpiderUrlResult = {
-	messageId: string; //as number
+export type TZapAjaxUrlResult = {
+	statusReason: string;	
 	method: string;
-	state: string;
-	statusCode: string; //as number
-	statusReason: string;
+	messageId: string; //as number
 	url: string;
+	statusCode: string; //as number
 };
 
 export type TZapAjaxScanFullResults = TScanFullResults & {
 	fullResults: {
-		inScope: TZapSpiderUrlResult[];
-		outOfScope: TZapSpiderUrlResult[];
+		inScope: TZapAjaxUrlResult[];
+		outOfScope: TZapAjaxUrlResult[];
 		errors: any[];
 	};
 };
