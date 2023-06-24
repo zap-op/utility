@@ -62,6 +62,13 @@ export enum RiskLevel {
 	INFORMATIONAL = "Informational",
 }
 
+export type TBaseUrlResult = {
+	statusReason: string;
+	method: string;
+	url: string;
+	statusCode: string;
+};
+
 export type TAlertDetail = {
 	sourceid: string;
 	other: string;
@@ -121,14 +128,10 @@ export type TZapSpiderScanConfig = {
 
 export type TZapSpiderScanSessionModel = TObject & TScanSession & TZapSpiderScanConfig;
 
-export type TZapSpiderUrlInScope = {
+export type TZapSpiderUrlInScope = TBaseUrlResult & {
 	processed: string;
-	statusReason: string;
-	method: string;
 	reasonNotProcessed: string;
 	messageId: string;
-	url: string;
-	statusCode: string;
 };
 
 export type TZapSpiderScanFullResults = TScanFullResults & {
@@ -155,12 +158,8 @@ export type TZapAjaxScanConfig = {
 
 export type TZapAjaxScanSessionModel = TObject & TScanSession & TZapAjaxScanConfig;
 
-export type TZapAjaxUrlResult = {
-	statusReason: string;	
-	method: string;
+export type TZapAjaxUrlResult = TBaseUrlResult & {
 	messageId: string; //as number
-	url: string;
-	statusCode: string; //as number
 };
 
 export type TZapAjaxScanFullResults = TScanFullResults & {
