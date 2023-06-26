@@ -48,6 +48,14 @@ export const MGMT_STATUS = {
 		statusCode: -16,
 		msg: "Target name already exist",
 	}),
+	TARGET_GET_FAILED: assert<TStatusResponse>({
+		statusCode: -17,
+		msg: "Targets cannot be found",
+	}),
+	SESSION_GET_FAILED: assert<TStatusResponse>({
+		statusCode: -18,
+		msg: "Sessions cannot be found",
+	}),
 };
 
 export const SCAN_STATUS = {
