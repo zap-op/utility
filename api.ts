@@ -40,9 +40,20 @@ export type TZapAjaxFullResultsConfig = {
 /**
  * Request - GET - /management/scanSessions
  */
-export type TMgmtScanSessionsResponse = (Omit<TScanSessionModel, "targetPop"> & {
+export type TGeneralScanSessionWithTarget = Omit<TScanSessionModel, "targetPop"> & {
 	targetPop: TTarget;
-})[];
+};
+
+export type TSpiderScanSessionWithTarget = TGeneralScanSessionWithTarget & //
+	TZapSpiderScanConfig;
+export type TAjaxScanSessionWithTarget = TGeneralScanSessionWithTarget & //
+	TZapAjaxScanConfig;
+export type TPassiveScanSessionWithTarget = TGeneralScanSessionWithTarget & //
+	TZapPassiveScanConfig;
+export type TActiveScanSessionWithTarget = TGeneralScanSessionWithTarget & //
+	TZapActiveScanConfig;
+
+export type TMgmtScanSessionsResponse = TGeneralScanSessionWithTarget[];
 
 // TRIAL
 
