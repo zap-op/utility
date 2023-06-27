@@ -1,11 +1,9 @@
-import { ObjectId } from "bson";
 import { TStatusResponse } from "./status";
 import {
 	TTarget, //
 	TObject,
 	TScanSessionModel,
 	TZapAjaxScanConfig,
-	TZapAjaxStreamStatus,
 	TZapSpiderScanConfig,
 	TZapSpiderScanFullResultsModel,
 	TZapAjaxScanFullResultsModel,
@@ -13,6 +11,8 @@ import {
 	TZapActiveScanFullResultsModel,
 	TZapPassiveScanConfig,
 	TZapPassiveScanFullResultsModel,
+	TZapPassiveStreamStatus,
+	TZapAjaxStreamStatus,
 } from "./model";
 
 export enum HTTPMethod {
@@ -132,8 +132,7 @@ export type TZapSpiderFullResultsGETResponse = TZapSpiderScanFullResultsModel;
 //------------------------------------------------AJAX-------------------------------------------------
 
 export type TZapAjaxGETResponse = {
-	data: string[];
-	progress: "initializing" | TZapAjaxStreamStatus;
+	progress: TZapAjaxStreamStatus | "";
 	isScanning: boolean;
 } & TErrorInjected;
 
@@ -187,8 +186,7 @@ export type TZapAjaxFullResultsGETResponse = TZapAjaxScanFullResultsModel;
 //------------------------------------------------PASSIVE-------------------------------------------------
 
 export type TZapPassiveGETResponse = {
-	data: string[];
-	progress: number;
+	progress: TZapPassiveStreamStatus | "";
 	isScanning: boolean;
 } & TErrorInjected;
 
@@ -225,7 +223,6 @@ export type TZapPassiveFullResultsGETResponse = TZapPassiveScanFullResultsModel;
 //------------------------------------------------ACTIVE-------------------------------------------------
 
 export type TZapActiveGETResponse = {
-	data: string[];
 	progress: number;
 	isScanning: boolean;
 } & TErrorInjected;

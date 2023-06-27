@@ -174,6 +174,13 @@ export type TZapAjaxScanFullResultsModel = TObject & TZapAjaxScanFullResults;
 
 //------------------------------------------------PASSIVE-------------------------------------------------
 
+export type TZapPassiveStreamStatus = "running" | "stopped";
+
+export type TZapPassiveStreamStatusRaw = {
+	status: string | TZapPassiveStreamStatus | "explored";
+	recordsToScan?: string;
+};
+
 export type TZapPassiveScanConfig = {
 	exploreType: "spider" | "ajax";
 	spiderConfig?: TZapSpiderScanConfig["scanConfig"];
