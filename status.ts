@@ -102,6 +102,10 @@ export const LOGIN_STATUS = {
 		statusCode: 0,
 		msg: "Login successfully",
 	}),
+	REFRESH_TOKEN_SUCCESSFULLY: assert<TStatusResponse>({
+		statusCode: 1,
+		msg: "Refresh token successfully",
+	}),
 	TOKEN_NOT_FOUND: assert<TStatusResponse>({
 		statusCode: -1,
 		msg: "No token found",
