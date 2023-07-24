@@ -97,7 +97,7 @@ export const SCAN_STATUS = {
 	}),
 };
 
-export const LOGIN_STATUS = {
+export const AUTH_STATUS = {
 	LOGIN_SUCCESS: assert<TStatusResponse>({
 		statusCode: 0,
 		msg: "Login successfully",
@@ -105,6 +105,10 @@ export const LOGIN_STATUS = {
 	REFRESH_TOKEN_SUCCESSFULLY: assert<TStatusResponse>({
 		statusCode: 1,
 		msg: "Refresh token successfully",
+	}),
+	LOGOUT_SUCCESS: assert<TStatusResponse>({
+		statusCode: 2,
+		msg: "Logout successfully",
 	}),
 	TOKEN_NOT_FOUND: assert<TStatusResponse>({
 		statusCode: -1,
