@@ -22,6 +22,7 @@ export type TTarget = {
 export type TTargetModel = Required<TObject> &
 	TTarget & {
 		userId: ObjectId;
+		isDeleted: boolean;
 	};
 
 export type TUser = {
