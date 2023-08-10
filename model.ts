@@ -154,6 +154,8 @@ export type TZapAjaxScanConfig = {
 		inScope?: boolean;
 		contextName?: string;
 		subtreeOnly?: boolean;
+		maxCrawlDepth?: number;
+		maxDuration?: number;
 	};
 };
 
